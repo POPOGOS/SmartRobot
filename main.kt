@@ -57,18 +57,22 @@ open class Robot(var x:Int,var y:Int,var direction:Direction){
 class SmartRobot(var robot:Robot,var toX:Int,var toY: Int){
     fun GoToPoint(){
         if(robot.getx < toX){
-            while(robot.getDirection != Direction.LEFT){
+            while(robot.getDirection != Direction.RIGHT){
                 robot.TurnLeft()
+
             }
             while(robot.getx != toX){
-                robot.x --
+                robot.StepForvard()
+                println("Step to x ${robot.getx}")
             }
         }else{
-            while(robot.getDirection != Direction.RIGHT){
+            while(robot.getDirection != Direction.LEFT){
                 robot.TurnRight()
             }
             while(robot.getx != toX){
-                robot.x ++
+                robot.StepForvard()
+                println("Step to x ${robot.getx}")
+
             }
         }
         if(robot.gety < toY){
@@ -76,14 +80,16 @@ class SmartRobot(var robot:Robot,var toX:Int,var toY: Int){
                 robot.TurnLeft()
             }
             while(robot.gety!= toY){
-                robot.y ++
+                robot.StepForvard()
+                println("Step to y ${robot.gety}")
             }
         }else{
             while(robot.getDirection != Direction.DOWN){
                 robot.TurnRight()
             }
             while(robot.gety!= toY){
-                robot.y --
+                robot.StepForvard()
+                println("Step to y ${robot.gety}")
             }
         }
     }
